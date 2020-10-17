@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CategroyRequest;
 
 use App\Category;
 
@@ -34,11 +35,15 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategroyRequest $request)
     {
+
+
+        /*
         $request->validate([
             "name" => "required|unique:categories"
         ]);
+        */
 
         //R1
         //$newCategory = new Category();
@@ -49,7 +54,8 @@ class CategoriesController extends Controller
             "name" => $request->name
         ])
         */
-        //R3
+        //R3  git in form (Add a new Category)
+        //Error Mass AssignmentException (protected $fillable = ['name'])
         Category::create($request->all());
 
         session()->flash('success', 'category created successfuly');
