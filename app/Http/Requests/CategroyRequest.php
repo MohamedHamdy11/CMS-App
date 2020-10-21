@@ -33,5 +33,5 @@ class CategroyRequest extends FormRequest
             'name.unique' => 'The name must not be dublicated',
         ];
     }
-    
+
 }
