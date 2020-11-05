@@ -52,7 +52,7 @@ class CategoriesController extends Controller
         /*  //R2
         Category::create([
             "name" => $request->name
-        ])
+        ]);
         */
         //R3  git in form (Add a new Category)
         //Error Mass AssignmentException (protected $fillable = ['name'])

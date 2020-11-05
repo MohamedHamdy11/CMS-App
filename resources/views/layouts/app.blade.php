@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('stylesheets')
 </head>
 <body>
     <div id="app">
@@ -84,10 +85,13 @@
                 <div class="col-md-4 py-4">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a href="/posts">Posts</a>
+                            <a href="{{ route('posts.index') }}">Posts</a>
                         </li>
                         <li class="list-group-item">
                             <a href="{{ route('categories.index') }}">Categories</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{ route('trashed.index') }}">Trashed Posts</a>
                         </li>
                     </ul>
                 </div>
@@ -103,9 +107,7 @@
                 @yield('content')
             </main>
        @endauth
-
-
-
     </div>
+    @yield('scripts')
 </body>
 </html>
