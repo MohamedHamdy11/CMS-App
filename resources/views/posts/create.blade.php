@@ -39,6 +39,16 @@
                     <label for="post content">Image:</label>
                     <input type="file" class="form-control" name="image">
                 </div>
+                <div class="form-group">
+                    <label for="selectCategory">select a category</label>
+                    <select name="categoryID" class="form-control" id="selectCategory">
+
+                      @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                      @endforeach
+                      
+                    </select>
+                  </div>
                <div class="form-group">
                    <button type="submit" class="btn btn-success">
                        {{ isset($post) ? "Update" : "Add" }}

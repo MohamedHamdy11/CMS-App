@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (session()->has('error'))
+        <div class="alert alert-danger">
+            {{ session()->get('error') }}
+        </div>
+    @endif
     <div class="clearfix">
         <a href="{{ route('categories.create') }}" class="btn float-right btn-success" style="margin-bottom: 10px">Add Category</a>
     </div>
