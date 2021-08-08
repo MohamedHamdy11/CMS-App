@@ -38,15 +38,12 @@ class CategoriesController extends Controller
     public function store(CategroyRequest $request)
     {
 
-
-        /*
-        $request->validate([
-            "name" => "required|unique:categories"
-        ]);
-        */
+        // $request->validate([
+        //     "name" => "required|unique:categories"
+        // ]);
 
         //R1
-        //$newCategory = new Category();
+        //$nCategory = new Category();
         // $nCategory->name = $request->name;
 
         /*  //R2
@@ -61,7 +58,7 @@ class CategoriesController extends Controller
         session()->flash('success', 'category created successfuly');
 
         return redirect(route('categories.index'));
-    }
+    } // end of store
 
     /**
      * Display the specified resource.

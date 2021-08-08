@@ -2,6 +2,7 @@
 
 @section('stylesheets')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.0/trix.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -32,7 +33,7 @@
                 </div>
                 @if(isset($post))
                     <div class="form-group">
-                        <img src="{{ asset('storage/'. $post->image) }}" style="width: 100%" />
+                        <img src="{{ asset('storage/'. $post->image) }}" style="width: 50%" />
                     </div>
                 @endif
                 <div class="form-group">
@@ -42,13 +43,31 @@
                 <div class="form-group">
                     <label for="selectCategory">select a category</label>
                     <select name="categoryID" class="form-control" id="selectCategory">
-
-                      @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                      @endforeach
-                      
+                        <option value="" selected disabled>Select</option>
+                      @if (isset($post))
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}" {{ old('categoryID',$post->category_id) == $category->id ? 'selected' : ''}} >{{ $category->name }}</option>
+                        @endforeach
+                      @else
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                      @endif
                     </select>
-                  </div>
+                </div>
+                @if (!$tags->count() <= 0)
+                    <div class="form-group">
+                        <label for="selectTag">select a tag</label>
+                        <select name="tags[]" class="form-control tags" id="selectTag" multiple>
+                            @foreach ($tags as $tag)
+                                <option value="{{ $tag->id }}"
+                                    @if ($post->hasTag($tag->id))
+                                    selected
+                                    @endif>{{ $tag->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                @endif
                <div class="form-group">
                    <button type="submit" class="btn btn-success">
                        {{ isset($post) ? "Update" : "Add" }}
@@ -62,4 +81,10 @@
 
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.0/trix.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.tags').select2();
+        });
+    </script>
 @endsection

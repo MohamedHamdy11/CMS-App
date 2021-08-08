@@ -17,7 +17,8 @@
                     @foreach ($tags as $tag)
                         <tr>
                             <td>
-                                {{ $tag->name }}
+                                {{--  count posts of tag ($tag->posts->count())  --}}
+                                {{ $tag->name }} <span class="ml-2 badge badge-primary">{{ $tag->posts->count() }}</span>
                             </td>
                             <td>
                                 <form class="float-right ml-2" action="{{ route('tags.destroy' ,$tag->id) }}" method="POST">

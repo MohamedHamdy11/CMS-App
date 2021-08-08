@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="clearfix">
         <a href="{{ route('posts.create') }}" class="btn float-right btn-success" style="margin-bottom: 10px">Add Posts</a>
     </div>

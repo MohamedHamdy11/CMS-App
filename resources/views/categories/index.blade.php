@@ -14,8 +14,9 @@
         <div class="card-body">
             <table class="table">
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($categories as $index => $category)
                         <tr>
+                            <td>{{$index + 1}}</td>
                             <td>
                                 {{ $category->name }}
                             </td>

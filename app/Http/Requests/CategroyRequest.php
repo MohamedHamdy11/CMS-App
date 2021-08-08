@@ -27,11 +27,12 @@ class CategroyRequest extends FormRequest
             "name" => "required|unique:categories"
         ];
     }
+
     public function messages()
     {
         return [
             'name.unique' => 'The name must not be dublicated',
-        ];
+         ];
     }
 
-}
+} // end of CategroyRequest

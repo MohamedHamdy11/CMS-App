@@ -25,11 +25,13 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|unique:posts',
-            'description' => 'required',
-            'content' => 'required',
+            'title' => 'required|string|unique:posts',
+            'description' => 'required|string',
+            'content' => 'required|string',
             'image' => 'required|image',
-            'categoryID' => 'required'
+            'categoryID' => 'required|numeric|exists:categories,id',
+            'tags' => 'sometimes|nullable',
+            'tags.*' => 'exists:tags,id'
         ];
     }
 }

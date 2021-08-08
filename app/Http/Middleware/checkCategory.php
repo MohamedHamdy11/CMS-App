@@ -23,4 +23,4 @@ class checkCategory
         }
         return $next($request);
     }
-}
+} // end of checkCategory

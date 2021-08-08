@@ -24,5 +24,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/posts','PostsController');
     Route::get('/trashed-posts','PostsController@trashed')->name('trashed.index');
     Route::get('/trashed-posts/{id}', 'PostsController@restore')->name('trashed.restore');
-});
+    
+}); // end of route auth
 

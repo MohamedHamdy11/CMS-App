@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\TagRequest;
-
 use App\Tag;
 
 class TagsController extends Controller
@@ -41,7 +40,6 @@ class TagsController extends Controller
         Tag::create($request->all());
 
         session()->flash('success', 'tag created successfuly');
-
         return redirect(route('tags.index'));
     }
 
@@ -76,13 +74,12 @@ class TagsController extends Controller
      */
     public function update(TagRequest $request, Tag $tag)
     {
-        $tag->update([
-            'name' => $request->name
-        ]);
+        $tag->update($request->all());
+        // $tag->update(['name' => $request->name]);
 
         session()->flash('success', 'tag updated successfuly');
         return redirect(route('tags.index'));
-    }
+    } // end of update
 
     /**
      * Remove the specified resource from storage.
@@ -96,4 +93,4 @@ class TagsController extends Controller
         session()->flash('success', 'tag deleted successfuly');
         return redirect(route('tags.index'));
     }
-}
+} // end of TagsController
