@@ -27,3 +27,9 @@ Route::group(['middleware' => 'auth'], function(){
     
 }); // end of route auth
 
+
+Route::middleware(['auth', 'admin'])->group(function() {
+    Route::get('/users', 'UsersController@index')->name('users.index');
+
+});
+
