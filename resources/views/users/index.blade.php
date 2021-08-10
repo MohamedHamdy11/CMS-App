@@ -18,8 +18,8 @@
                 @foreach ($users as $user)
                   <tr>
                     <td>
-                    <img src="{{$user->getGravatar()}}" style="border-radius: 50%" width="60px" height="60px">
-                    {{--  <img src="{{ $user->hasPicture() ? asset('storage/'.$user->getPicture()) : $user->getGravatar() }}" style="border-radius: 50%" width="60px" height="60px">  --}}
+                    {{--  <img src="{{$user->getGravatar()}}" style="border-radius: 50%" width="60px" height="60px">  --}}
+                    <img src="{{ $user->hasPicture() ? asset('storage/'.$user->getPicture()) : $user->getGravatar() }}" style="border-radius: 50%" width="60px" height="60px">
                     {{--  <span>Avater</span>  --}}
                     </td>
                     <td>

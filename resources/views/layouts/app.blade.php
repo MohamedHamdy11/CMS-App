@@ -88,7 +88,7 @@
                         @if (auth()->user()->isAdmin())
                             <li class="list-group-item">
                                 <a href="{{ route('users.index') }}">Users</a>
-                            </li>     
+                            </li>
                         @endif
                         <li class="list-group-item">
                             <a href="{{ route('posts.index') }}">Posts</a>
@@ -101,6 +101,9 @@
                         </li>
                         <li class="list-group-item">
                             <a href="{{ route('trashed.index') }}">Trashed Posts</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{  route('users.edit', Auth()->user()->id) }}">Profile</a>
                         </li>
                     </ul>
                 </div>

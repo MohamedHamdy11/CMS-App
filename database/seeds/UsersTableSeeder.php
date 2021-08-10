@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use App\User;
+use App\{User, Profile};
 
 class UsersTableSeeder extends Seeder
 {
@@ -27,6 +27,13 @@ class UsersTableSeeder extends Seeder
             'name'  => 'Mohamed user',
             'email' => 'user@user.com',
             'password' => Hash::make('123456')
+        ]);
+
+        Profile::create([
+            'user_id' => 1,
+        ]);
+        Profile::create([
+            'user_id' => 2,
         ]);
 
     }

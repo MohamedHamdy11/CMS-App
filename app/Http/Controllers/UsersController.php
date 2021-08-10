@@ -26,5 +26,24 @@ class UsersController extends Controller
         return redirect(route('users.index'));
     } // end of makeWriter
 
+    public function edit(User $user) 
+    {
+        $profile = $user->profile;
+        return view('users.profile', ['user' => $user, 'profile' => $profile]);
+    } // end of edit
+
+    public function update(User $user, Request $request)
+    {
+        // dd($request->all());
+        $profile = $user->profile;
+        $data = $request->all();
+        if ($request->hasFile('picture')) {
+          $picture = $request->picture->store('profilesPicture', 'public');
+          $data['picture'] = $picture;
+        }
+        $profile->update($data);
+        return redirect(route('home'));
+    } // end of update
+
 
 } // end of UsersController
