@@ -24,12 +24,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/posts','PostsController');
     Route::get('/trashed-posts','PostsController@trashed')->name('trashed.index');
     Route::get('/trashed-posts/{id}', 'PostsController@restore')->name('trashed.restore');
-    
+
 }); // end of route auth
 
 
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/users', 'UsersController@index')->name('users.index');
+    Route::post('/users/{user}/make-admin', 'UsersController@makeAdmin')->name('users.make-admin');
+    Route::post('/users/{user}/make-writer', 'UsersController@makeWriter')->name('users.make-writer');
 
 });
 

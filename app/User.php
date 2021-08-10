@@ -41,5 +41,10 @@ class User extends Authenticatable
         return $this->role == 'admin';
     } // end of isAdmin
 
+    public function getGravatar() 
+    {
+        $hash = md5(strtolower(trim($this->attributes['email'])));
+        return "http://gravatar.com/avatar/$hash";
+    } // end of getGravatar
     
 } // end of User
