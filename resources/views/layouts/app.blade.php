@@ -87,6 +87,9 @@
                     <ul class="list-group">
                         @if (auth()->user()->isAdmin())
                             <li class="list-group-item">
+                                <a href="{{ route('dashboard') }}">Dashboard</a>
+                            </li>
+                            <li class="list-group-item">
                                 <a href="{{ route('users.index') }}">Users</a>
                             </li>
                         @endif
